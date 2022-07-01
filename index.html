@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="greet.js"></script>
+    <script src="enough-airtime.js"></script>
+    <script src="transportFee.js"></script>
+    <!-- <script src="greet-widgets.js" defer></script> -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script>
+    //     console.log(greet("Ntuthuko"))
+    //     console.log(greet("LINDA"))
+    // </script>
+    <style>
+        .message {
+            padding: 1em;
+            background-color: aqua;
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            /* text-align: center; */
+        }
+
+        .input>label {
+            display: inline-block;
+            width: 15em;
+            padding: 0.5em;
+            font-weight: bold;
+        }
+
+        .input>input[type="text"] {
+            margin: 0.5em;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div x-data="{
+        name : '',
+        message : '',
+        greetMe(){
+
+            this.message = greet(this.name)
+
+            setTimeout (() => {
+               this.message = '';
+            }, 3000);    
+        }
+    }">
+        <h2>Greet Widget</h2>
+
+        
+
+        <label for="name">Please enter your name</label>
+        <input type="text" x-model="name" id="name">
+
+        <div x-show="message.length > 0" class="message" x-text="message">
+            You will be greeted here...
+        </div>
+
+        <button x-on:click="greetMe">Greet!</button>
+    </div>
+
+
+
+    <div class="" x-data="{
+        airtimeUsage : '',
+        availableAmount : '0.00',
+        airtimeMessage : '',
+        Calculate(){
+     
+        this.airtimeMessage = enoughAirtime(this.airtimeUsage, this.availableAmount)
+        setTimeout(() => {
+        this.airtimeMessage = '';
+        }, 4000)
+    }
+    }">
+        <h2>Enough Airtime</h2>
+
+        <div class="input">
+            <label for="usage">Please enter your airtime uasage</label>
+            <input type="text" x-model="airtimeUsage" id="usage">
+        </div>
+        <div class="input">
+            <label for="amount">Amount available</label>
+            <input type="text" x-model="availableAmount" id="amount">
+        </div> 
+
+        <div x-show="airtimeMessage.length > 0" class="message" x-text="airtimeMessage">
+        </div>
+
+        <div>
+            <button x-on:click="Calculate">Calculate airtime</button>
+        </div>
+    </div>
+
+    <div x-data="{
+        shift : '',
+        amountEntered : '0.00',
+        shiftMessage : '',
+        transportFee () {
+            this.shiftMessage = transportFee (this.shift, this.amountEntered)
+            setTimeout (() => {
+                this.shiftMessage = '';
+            }, 4000)
+        }
+    }">
+
+        <h2>Transport Fee Widget</h2>
+
+        <div class="input">
+            <label for="shift">Shift</label>
+            <input type="text" x-model="shift" id="shift"> 
+        </div>
+<!-- 
+        <div class="input">
+            <label for="Amount">Amount Entered</label>
+            <input type="number" x-model="amountEntered" id="Amount">
+        </div> -->
+
+        <div x-show="shiftMessage.length > 0" class="message" x-text="shiftMessage"></div>
+
+       <div>
+        <button x-on:click="transportFee">Calculate fee</button>
+       </div>
+    </div>
+
+
+    <div>
+
+    </div>
+
+</body>
+
+</html>
