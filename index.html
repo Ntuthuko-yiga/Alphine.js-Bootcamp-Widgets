@@ -9,6 +9,7 @@
     <script src="greet.js"></script>
     <script src="enough-airtime.js"></script>
     <script src="transportFee.js"></script>
+    <script src="totalPhoneBill.js"></script>
     <!-- <script src="greet-widgets.js" defer></script> -->
     <script src="//unpkg.com/alpinejs" defer></script>
     <script>
@@ -112,10 +113,10 @@
         }
     }">
 
-        <h2>Transport Fee Widget</h2>
+        <h2>Transport Fee</h2>
 
         <div class="input">
-            <label for="shift">Shift</label>
+            <label for="shift">Enter the Shift</label>
             <input type="text" x-model="shift" id="shift"> 
         </div>
 <!-- 
@@ -127,12 +128,40 @@
         <div x-show="shiftMessage.length > 0" class="message" x-text="shiftMessage"></div>
 
        <div>
-        <button x-on:click="transportFee">Calculate fee</button>
+        <button x-on:click="transportFee">Show fee</button>
        </div>
     </div>
 
 
+    <div x-data="{
+        tarrif : '',
+        totalBill : '0.00',
+        billMessage : '',
+        totalPhoneBill () {
+            this.billMessage = totalPhoneBill (this.tarrif, this.totalBill)
+            setTimeout(() => {
+                this.billMessage = '';
+            }, 4000)
+        }
+    }">
+
+ <h2>Total Phone Bill</h2>
+
+    <div class="input">
+        <label for="data">Data Provided</label>
+        <input type="text" x-model="tarrif" id="data">
+    </div>
+
+    <!-- <div class="input">
+        <label for="bill">Total bill</label>
+        <input type="number" x-model="totalBill" id="bill">
+    </div> -->
+
+    <div x-show="billMessage.length > 0" class="message" x-text="billMessage"></div>
+
     <div>
+        <button x-on:click="totalPhoneBill">Calculate Total Bill</button>
+    </div>
 
     </div>
 
