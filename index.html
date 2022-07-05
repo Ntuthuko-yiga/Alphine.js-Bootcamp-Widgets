@@ -42,24 +42,29 @@
             background-color: #006d77;
         }
         .airtime{
-            border: 5em black;
+            border: 2px solid black;
+            border-radius: 0.5em;
             margin: 1em;
             padding: 1em;
             background-color: coral;
         }
         .greet {
-            border: 2em white;
             margin: 1em;
             padding: 1em;
             background-color: crimson;
+            border: 2px solid black;
+            border-radius: 0.5em;
         }
         .transport {
+            border: 2px solid black;
+            border-radius: 0.5em;
             margin: 1em;
             padding: 1em;
             background-color: blue;
         }
         .phone {
-            border-radius: 2em white;
+            border: 2px solid black;
+            border-radius: 0.5em;
             margin: 1em;
             padding: 1em;
             background-color: blueviolet;
@@ -80,6 +85,7 @@
     <div class="greet" x-data="{
         name : '',
         message : '',
+        showGreeting : false,
         greetMe(){
 
             this.message = greet(this.name)
