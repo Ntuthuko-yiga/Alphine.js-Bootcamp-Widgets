@@ -38,11 +38,46 @@
             margin: 0.5em;
             padding: 0.5em;
         }
+        body{
+            background-color: #006d77;
+        }
+        .airtime{
+            border: 5em black;
+            margin: 1em;
+            padding: 1em;
+            background-color: coral;
+        }
+        .greet {
+            border: 2em white;
+            margin: 1em;
+            padding: 1em;
+            background-color: crimson;
+        }
+        .transport {
+            margin: 1em;
+            padding: 1em;
+            background-color: blue;
+        }
+        .phone {
+            border-radius: 2em white;
+            margin: 1em;
+            padding: 1em;
+            background-color: blueviolet;
+        }
+       @media (min-width: 960px) {
+        .all {
+            display: flex;
+        }
+       }
+       h1 {
+        text-align: center;
+       }
     </style>
 </head>
-
+<h1>Alphine.JS Bootcamp Widgets</h1>
 <body>
-    <div x-data="{
+<div class="all"> 
+    <div class="greet" x-data="{
         name : '',
         message : '',
         greetMe(){
@@ -61,7 +96,7 @@
         <label for="name">Please enter your name</label>
         <input type="text" x-model="name" id="name">
 
-        <div x-show="message.length > 0" class="message" x-text="message">
+        <div x-show="message.length > 0" class="message" x-transition x-text="message">
             You will be greeted here...
         </div>
 
@@ -70,7 +105,7 @@
 
 
 
-    <div class="" x-data="{
+    <div class="airtime" x-data="{
         airtimeUsage : '',
         availableAmount : '0.00',
         airtimeMessage : '',
@@ -86,14 +121,14 @@
 
         <div class="input">
             <label for="usage">Please enter your airtime uasage</label>
-            <input type="text" x-model="airtimeUsage" id="usage">
+            <input type="text" x-model="airtimeUsage" id="usage" placeholder="eg: data, sms, call">
         </div>
         <div class="input">
             <label for="amount">Amount available</label>
             <input type="text" x-model="availableAmount" id="amount">
         </div> 
 
-        <div x-show="airtimeMessage.length > 0" class="message" x-text="airtimeMessage">
+        <div x-show="airtimeMessage.length > 0" class="message" x-transition x-text="airtimeMessage">
         </div>
 
         <div>
@@ -101,7 +136,7 @@
         </div>
     </div>
 
-    <div x-data="{
+    <div class="transport" x-data="{
         shift : '',
         amountEntered : '0.00',
         shiftMessage : '',
@@ -117,7 +152,7 @@
 
         <div class="input">
             <label for="shift">Enter the Shift</label>
-            <input type="text" x-model="shift" id="shift"> 
+            <input type="text" x-model="shift" id="shift" placeholder="morning OR afternoon"> 
         </div>
 <!-- 
         <div class="input">
@@ -125,7 +160,7 @@
             <input type="number" x-model="amountEntered" id="Amount">
         </div> -->
 
-        <div x-show="shiftMessage.length > 0" class="message" x-text="shiftMessage"></div>
+        <div x-show="shiftMessage.length > 0" class="message" x-transition x-text="shiftMessage"></div>
 
        <div>
         <button x-on:click="transportFee">Show fee</button>
@@ -133,7 +168,7 @@
     </div>
 
 
-    <div x-data="{
+    <div class="phone" x-data="{
         tarrif : '',
         totalBill : '0.00',
         billMessage : '',
@@ -149,7 +184,7 @@
 
     <div class="input">
         <label for="data">Data Provided</label>
-        <input type="text" x-model="tarrif" id="data">
+        <input type="text" x-model="tarrif" id="data" placeholder="eg; call, sms">
     </div>
 
     <!-- <div class="input">
@@ -157,7 +192,7 @@
         <input type="number" x-model="totalBill" id="bill">
     </div> -->
 
-    <div x-show="billMessage.length > 0" class="message" x-text="billMessage"></div>
+    <div x-show="billMessage.length > 0" class="message" x-transition x-text="billMessage"></div>
 
     <div>
         <button x-on:click="totalPhoneBill">Calculate Total Bill</button>
@@ -165,6 +200,7 @@
 
     </div>
 
+</div>
 </body>
 
 </html>
