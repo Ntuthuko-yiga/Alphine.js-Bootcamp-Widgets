@@ -85,14 +85,17 @@
     <div class="greet" x-data="{
         name : '',
         message : '',
-        showGreeting : false,
         greetMe(){
 
             this.message = greet(this.name)
 
             setTimeout (() => {
                this.message = '';
-            }, 3000);    
+            }, 3000);   
+            
+            setTimeout (() => {
+                this.name = '';
+            }, 3000)
         }
     }">
         <h2>Greet Widget</h2>
@@ -121,6 +124,15 @@
         setTimeout(() => {
         this.airtimeMessage = '';
         }, 4000)
+
+        setTimeout (() => {
+            this.airtimeUsage = '';
+        }, 3000)
+
+        setTimeout (() => {
+            this.availableAmount = '0.00';
+        }, 3000)
+    
     }
     }">
         <h2>Enough Airtime</h2>
@@ -151,6 +163,10 @@
             setTimeout (() => {
                 this.shiftMessage = '';
             }, 4000)
+
+            setTimeout (() => {
+                this.shift = '';
+            }, 3000)
         }
     }">
 
@@ -183,6 +199,9 @@
             setTimeout(() => {
                 this.billMessage = '';
             }, 4000)
+            setTimeout (() => {
+                this.tarrif = '';
+            }, 3000)
         }
     }">
 
